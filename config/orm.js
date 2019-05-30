@@ -3,7 +3,7 @@ let connection = require("../config/connection.js");
 var orm = {
     
     selectAll: function (callback) {
-        connection.query('SELECT * FROM burgers', function (err, result) {
+        connection.query('SELECT * FROM todos', function (err, result) {
             if (err) throw err;
             callback(result);
             console.log(result);
@@ -11,7 +11,7 @@ var orm = {
     },
 
     insertOne: function (burger_name, callback) {
-        connection.query('INSERT INTO burgers SET ?', {
+        connection.query('INSERT INTO todos SET ?', {
             burger_name: burger_name,
             devoured: false,
         }, function (err, result) {
@@ -22,7 +22,7 @@ var orm = {
     },
 
     updateOne: function (burgerID, callback) {
-        connection.query('UPDATE burgers SET ? WHERE ?', [{ devoured: true }, { id: burgerID }],
+        connection.query('UPDATE todos SET ? WHERE ?', [{ devoured: true }, { id: burgerID }],
             function (err, result) {
                 if (err) throw err;
                 callback(result);
