@@ -2,17 +2,17 @@ let orm = require("../config/orm.js");
 
 let burger = {
     selectAll: function(callback){
-        orm.selectAll(function(res){
+        orm.selectAll("burgers", function(res){
             callback(res);
         });
     },
     insertOne: function(burger_name, callback){
-        orm.insertOne(burger_name, function(res){
+        orm.insertOne("burgers", burger_name, function(res){
             callback(res);
         });
     },
     updateOne: function(burger_id, callback){
-        orm.updateOne(burger_id, function(res){
+        orm.updateOne("burgers", burger_id, function(res){
             callback(res);
         });
     }

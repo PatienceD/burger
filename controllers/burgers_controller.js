@@ -20,16 +20,30 @@ router.get('/index', function(req, res){
 
 
 //make new burger
-router.post('/burger/create', function(req, res){
-    burger.insertOne(req.body.burger_name, function(){
-        res.redirect('/index');
+router.post('/api/burgers', function(req, res){
+    burger.insertOne([
+        "burger_name"
+    ], [
+        req.body.burger_name
+    ], function(res){
+        res.json({ id: res.insertId });
     });
 });
 
 //eat burger
-router.post('/burger/eat/:id', function(req, res){
-    burger.updateOne(req.params.id, function(){
-        res.redirect('/index');
+router.put('/api/burgers/:id', function(req, res){
+    let burgerId = "id = " + req.params.id;
+    console.log("burger status changed for ", burgerId);
+
+    burger.updateOne({
+        //force devoured = true
+        devoured: 1
+    }, burgerId, function(res){
+        if (res.changedRows === 0){
+            return res.status(404).end();
+        }else {
+            res.status(200).end();
+        }
     });
 });
 
