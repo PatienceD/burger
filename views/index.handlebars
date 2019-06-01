@@ -8,12 +8,10 @@
         {{#each burgers}}
         {{#unless devoured}}
         <form action="burger/eat/{{id}}" method="POST">
-          <div class="input-group">
-            <li class="form-control">{{id}}. {{burger_name}}</li>
-            <span class="input-group-btn">
-              <button class="btn btn-success devour-button" type="submit">Devour!!</button>
-            </span>
-          </div>
+          <input class="form-control">{{this.id}} .{{this.burger_name}}</input>
+          <span class="input-group-btn">
+            <button class="btn btn-success devour-button" type="submit">Devour!!</button>
+          </span>
         </form>
         {{/unless}}
         {{/each}}
@@ -24,8 +22,8 @@
       <div id="alreadyEaten">
         {{#each burgers}}
         {{#if this.devoured}}
-          <input class="form-control">{{this.id}} .{{this.burger_name}}</input>
-         {{/if}}
+        <input class="form-control">{{this.id}} .{{this.burger_name}}</input>
+        {{/if}}
         {{/each}}
       </div>
     </div>
