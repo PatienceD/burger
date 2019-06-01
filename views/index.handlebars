@@ -24,8 +24,8 @@
       <div id="alreadyEaten">
         {{#each burgers}}
         {{#if this.devoured}}
-        {{> burgers/burgerDevoured-block}}
-        {{/if}}
+          <input class="form-control">{{this.id}} .{{this.burger_name}}</input>
+         {{/if}}
         {{/each}}
       </div>
     </div>
